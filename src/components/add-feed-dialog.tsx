@@ -31,6 +31,10 @@ export function AddFeedDialog() {
       return
     }
     const id = addFeed(trimmed)
+    if (id === null) {
+      setError('This feed is already added')
+      return
+    }
     setUrl('')
     setError(null)
     setOpen(false)

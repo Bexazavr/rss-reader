@@ -13,7 +13,7 @@ export default function FeedPage({ params }: { params: Promise<{ feedId: string 
   const feedArticles = articles.filter(a => a.feedId === feedId)
 
   return (
-    <div className="mx-auto flex max-w-5xl gap-8 px-4 py-8">
+    <div className="mx-auto flex w-full max-w-5xl gap-8 px-4 py-8">
       <FeedSidebar />
       <main className="min-w-0 flex-1">
         <h2 className="mb-4 text-lg font-medium">

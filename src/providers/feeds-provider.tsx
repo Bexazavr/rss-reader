@@ -14,7 +14,7 @@ interface FeedsContextValue {
   feeds: StoredFeed[]
   articles: Article[]
   loading: boolean
-  addFeed: (url: string) => string
+  addFeed: (url: string) => string | null
   removeFeed: (id: string) => void
   updateFeedTitle: (id: string, title: string) => void
   sync: () => void
@@ -38,10 +38,10 @@ export function FeedsProvider({ children }: { children: ReactNode }) {
     setMounted(true)
   }, [])
 
-  const addFeed = (url: string): string => {
+  const addFeed = (url: string): string | null => {
+    if (feeds.some(f => f.url === url)) return null
     const id = crypto.randomUUID()
     setFeeds(prev => {
-      if (prev.some(f => f.url === url)) return prev
       const next = [...prev, { id, url, title: null, addedAt: Date.now() }]
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
       return next

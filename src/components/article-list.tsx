@@ -19,7 +19,7 @@ function ArticleSkeleton() {
 export function ArticleList({ articles, loading }: Props) {
   if (loading) {
     return (
-      <div className="flex flex-col gap-2">
+      <div className="flex w-full flex-col gap-2">
         {Array.from({ length: 6 }).map((_, i) => <ArticleSkeleton key={i} />)}
       </div>
     )
