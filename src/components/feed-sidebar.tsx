@@ -25,7 +25,9 @@ export function FeedSidebar() {
       <nav className="flex flex-col gap-1">
         <Link
           href="/all"
-          className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-foreground ${
+            pathname === '/all' ? 'bg-accent text-foreground font-medium' : 'text-muted-foreground'
+          }`}
         >
           <Rss className="h-3.5 w-3.5 shrink-0" />
           All articles
@@ -34,7 +36,9 @@ export function FeedSidebar() {
           <div key={feed.id} className="group flex items-center gap-1">
             <Link
               href={`/feed/${feed.id}`}
-              className="flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              className={`flex min-w-0 flex-1 items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-foreground ${
+                pathname === `/feed/${feed.id}` ? 'bg-accent text-foreground font-medium' : 'text-muted-foreground'
+              }`}
             >
               <span className="truncate">{feed.title ?? feed.url}</span>
             </Link>
