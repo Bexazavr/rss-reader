@@ -11,10 +11,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'url parameter required' }, { status: 400 })
   }
 
+  let parsed: URL
   try {
-    new URL(url)
+    parsed = new URL(url)
   } catch {
     return NextResponse.json({ error: 'invalid url' }, { status: 400 })
+  }
+
+  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+    return NextResponse.json({ error: 'only http and https urls are allowed' }, { status: 400 })
   }
 
   try {
