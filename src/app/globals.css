@@ -128,11 +128,5 @@
   }
   html {
     @apply font-sans;
-    height: 100%;
-    overflow: hidden;
-  }
-  body {
-    height: 100%;
-    overflow: hidden;
   }
 }

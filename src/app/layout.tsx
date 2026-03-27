@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${rubik.variable} ${mono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <FeedsProvider>
-            <div className="flex h-full flex-col overflow-y-auto">
+            <div className="flex h-svh flex-col overflow-hidden">
               <Header />
               {children}
             </div>
