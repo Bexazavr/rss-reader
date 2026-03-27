@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useFeeds } from '@/providers/feeds-provider'
 import { AddFeedDialog } from './add-feed-dialog'
 import { SyncButton } from './sync-button'
@@ -9,6 +10,7 @@ import { Rss, Trash2 } from 'lucide-react'
 
 export function FeedSidebar() {
   const { feeds, removeFeed } = useFeeds()
+  const router = useRouter()
 
   return (
     <aside className="flex w-52 shrink-0 flex-col gap-4">
@@ -39,7 +41,7 @@ export function FeedSidebar() {
               size="icon"
               variant="ghost"
               className="h-7 w-7 shrink-0 opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive"
-              onClick={() => removeFeed(feed.id)}
+              onClick={() => { removeFeed(feed.id); router.push('/all') }}
             >
               <Trash2 className="h-3.5 w-3.5" />
             </Button>

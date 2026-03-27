@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { useFeeds } from '@/providers/feeds-provider'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,6 +16,7 @@ import { Plus } from 'lucide-react'
 
 export function AddFeedDialog() {
   const { addFeed } = useFeeds()
+  const router = useRouter()
   const [open, setOpen] = useState(false)
   const [url, setUrl] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -28,10 +30,11 @@ export function AddFeedDialog() {
       setError('Enter a valid URL')
       return
     }
-    addFeed(trimmed)
+    const id = addFeed(trimmed)
     setUrl('')
     setError(null)
     setOpen(false)
+    router.push(`/feed/${id}`)
   }
 
   return (
