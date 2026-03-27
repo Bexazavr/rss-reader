@@ -41,6 +41,7 @@ export function FeedsProvider({ children }: { children: ReactNode }) {
   const addFeed = (url: string): string => {
     const id = crypto.randomUUID()
     setFeeds(prev => {
+      if (prev.some(f => f.url === url)) return prev
       const next = [...prev, { id, url, title: null, addedAt: Date.now() }]
       localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
       return next
