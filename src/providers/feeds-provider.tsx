@@ -100,10 +100,10 @@ export function FeedsProvider({ children }: { children: ReactNode }) {
     setLoading(false)
   }, [feeds, updateFeedTitle])
 
-  // Sync after mount and whenever feed count changes (add/remove)
+  // Sync after mount and whenever feeds change
   useEffect(() => {
     if (mounted) sync()
-  }, [mounted, feeds.length]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [mounted, sync])
 
   const value: FeedsContextValue = {
     feeds,
