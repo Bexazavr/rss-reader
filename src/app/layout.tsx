@@ -24,6 +24,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          try {
+            var c = localStorage.getItem('bexa-color-theme');
+            var b = localStorage.getItem('bexa-base-theme');
+            if (c && c !== 'neutral') document.documentElement.classList.add('theme-' + c);
+            if (b && b !== 'neutral') document.documentElement.classList.add('base-' + b);
+          } catch(e) {}
+        ` }} />
+      </head>
       <body className={`${rubik.variable} ${mono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <FeedsProvider>

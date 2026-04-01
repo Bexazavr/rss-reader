@@ -8,7 +8,7 @@ interface Props {
 
 function ArticleSkeleton() {
   return (
-    <div className="flex w-full flex-col gap-1.5 rounded-lg border p-4">
+    <div className="flex w-full flex-col gap-1 rounded-lg border p-3">
       <div className="h-3 w-32 animate-pulse rounded bg-muted" />
       <div className="h-4 w-3/4 animate-pulse rounded bg-muted" />
       <div className="h-3 w-full animate-pulse rounded bg-muted" />
@@ -19,7 +19,7 @@ function ArticleSkeleton() {
 export function ArticleList({ articles, loading }: Props) {
   if (loading) {
     return (
-      <div className="flex w-full flex-col gap-2">
+      <div className="flex w-full flex-col gap-2 pr-3">
         {Array.from({ length: 6 }).map((_, i) => <ArticleSkeleton key={i} />)}
       </div>
     )
@@ -34,7 +34,7 @@ export function ArticleList({ articles, loading }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 pr-3">
       {articles.map(article => (
         <ArticleCard key={article.id} article={article} />
       ))}
