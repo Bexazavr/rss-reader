@@ -43,7 +43,7 @@ export function AddFeedDialog() {
 
   return (
     <>
-      <Button size="sm" variant="outline" onClick={() => setOpen(true)}>
+      <Button size="sm" onClick={() => setOpen(true)}>
         <Plus className="mr-1 h-4 w-4" /> Add feed
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
