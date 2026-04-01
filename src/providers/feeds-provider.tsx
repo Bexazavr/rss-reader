@@ -75,7 +75,7 @@ export function FeedsProvider({ children }: { children: ReactNode }) {
 
     const results = await Promise.allSettled(
       feeds.map(async feed => {
-        const res = await fetch(`/api/fetch-feed?url=${encodeURIComponent(feed.url)}`)
+        const res = await fetch(`/rss/api/fetch-feed?url=${encodeURIComponent(feed.url)}`)
         if (!res.ok) return [] as Article[]
         const data: FeedResponse = await res.json()
         updateFeedTitle(feed.id, data.title)
