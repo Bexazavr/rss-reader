@@ -67,13 +67,11 @@ export function ThemeColorPicker({ storagePrefix }: ThemeColorPickerProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Color theme">
-          <Paintbrush
-            className="h-4 w-4 transition-colors"
-            style={{ color: activeTheme?.swatch }}
-          />
-        </Button>
+      <DropdownMenuTrigger render={<Button variant="ghost" size="icon" aria-label="Color theme" />}>
+        <Paintbrush
+          className="h-4 w-4 transition-colors"
+          style={{ color: activeTheme?.swatch }}
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 p-3">
         <p className="mb-2 text-xs font-medium text-muted-foreground">Base</p>
