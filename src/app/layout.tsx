@@ -44,7 +44,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               id="bexa-shell"
               data-title="RSS Reader"
               data-breadcrumbs='[{"label":"rss","href":"/rss"}]'
-            />
+            >
+              <div style={{ height: '3.5rem', borderBottom: '1px solid var(--border)' }} />
+            </div>
             <div className="flex h-[calc(100svh-3.5rem)] flex-col overflow-hidden">
               {children}
             </div>
